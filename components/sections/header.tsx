@@ -10,27 +10,24 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
   { label: "Process", href: "#process" },
-  { label: "FAQ", href: "#faq" },
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 h-20 bg-[#E5E5E3]/80 backdrop-blur-lg border-b border-[#CBD2DC]/30">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-20 h-full flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="font-playfair text-2xl font-bold text-[#26437A] tracking-tight">
+    <header className="sticky top-0 z-50 h-20 border-b border-[#CBD2DC]/30 bg-[#E5E5E3]/80 backdrop-blur-lg">
+      <div className="cc-container h-full flex items-center justify-between">
+        <a href="#" className="font-playfair text-2xl font-bold tracking-tight text-[#26437A]">
           Creative Core
         </a>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
-            <Magnetic key={link.href} intensity={0.1} range={100}>
+            <Magnetic key={link.href} intensity={0.1} range={90}>
               <a
                 href={link.href}
-                className="text-[#1E335F] font-medium text-base hover:text-[#26437A] transition-colors focus-visible:ring-2 focus-visible:ring-[#E8874C] focus-visible:ring-offset-2 rounded-md px-1 py-0.5"
+                className="rounded-md px-1 py-1 text-base font-medium text-[#1E335F] transition-colors hover:text-[#26437A] focus-visible:ring-2 focus-visible:ring-[#E8874C] focus-visible:ring-offset-2"
               >
                 {link.label}
               </a>
@@ -38,42 +35,37 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
         <div className="hidden md:block">
-          <Magnetic intensity={0.15} range={120}>
-            <Button
-              variant="outline"
-              className="border-[#26437A] text-[#26437A] hover:bg-[#26437A]/5 rounded-xl px-6 py-2.5 font-semibold text-base focus-visible:ring-2 focus-visible:ring-[#E8874C] focus-visible:ring-offset-2"
-            >
+          <Magnetic intensity={0.15} range={110}>
+            <Button className="h-auto rounded-xl bg-[#E8874C] px-6 py-2.5 text-base font-semibold text-[#1E335F] hover:bg-[#DE7E45] focus-visible:ring-2 focus-visible:ring-[#E8874C] focus-visible:ring-offset-2">
               Let&apos;s Talk
             </Button>
           </Magnetic>
         </div>
 
-        {/* Mobile Hamburger */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="md:hidden">
             <button
-              className="p-2 text-[#1E335F] focus-visible:ring-2 focus-visible:ring-[#E8874C] rounded-lg"
+              className="rounded-lg p-2 text-[#1E335F] focus-visible:ring-2 focus-visible:ring-[#E8874C]"
               aria-label="Open menu"
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="h-6 w-6" />
             </button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-[#E5E5E3] border-l border-[#CBD2DC]/30 w-[300px]">
-            <div className="flex flex-col pt-12 gap-2">
+          <SheetContent side="right" className="w-[300px] border-l border-[#CBD2DC]/30 bg-[#E5E5E3]">
+            <div className="flex flex-col gap-2 pt-12">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-[#1E335F] font-medium text-lg py-4 px-4 hover:bg-[#26437A]/5 rounded-xl transition-colors"
+                  className="rounded-xl px-4 py-4 text-lg font-medium text-[#1E335F] transition-colors hover:bg-[#26437A]/5"
                 >
                   {link.label}
                 </a>
               ))}
               <div className="mt-6 px-4">
-                <Button className="w-full bg-[#E8874C] text-[#1E335F] hover:bg-[#DE7E45] rounded-xl py-3 font-semibold text-base">
+                <Button className="h-12 w-full rounded-xl bg-[#E8874C] text-base font-semibold text-[#1E335F] hover:bg-[#DE7E45]">
                   Let&apos;s Talk
                 </Button>
               </div>

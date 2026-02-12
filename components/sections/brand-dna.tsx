@@ -1,151 +1,87 @@
 "use client";
 
-import { HoverPreviewProvider } from "@/components/ui/hover-preview";
 import SegmentedButton from "@/components/ui/segmented-button";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const options = [
-  { id: "strategy", label: "Strategy" },
-  { id: "creative", label: "Creative" },
-  { id: "technology", label: "Technology" },
+  { id: "logo", label: "Logo" },
+  { id: "palette", label: "Palette" },
+  { id: "typography", label: "Typography" },
+  { id: "packaging", label: "Packaging" },
+  { id: "social", label: "Social Templates" },
 ];
 
 const content = {
-  strategy: {
-    title: "Insight driven.",
-    description: "We dig deep to find the truth of your brand. No fluff, just foundational strategy that positions you to win.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
-    features: ["Market Analysis", "Brand Positioning", "User Research"]
+  logo: {
+    title: "Core Mark",
+    description: "Lockups and variants that hold recognition across every format.",
+    image: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=900&h=700&fit=crop",
   },
-  creative: {
-    title: "Design led.",
-    description: "Visuals that stop the scroll. We craft distinct identities and interfaces that feel like a breath of fresh air.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop",
-    features: ["Visual Identity", "UI/UX Design", "Motion Graphics"]
+  palette: {
+    title: "Color System",
+    description: "Intentional color hierarchy designed for premium editorial contrast.",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&h=700&fit=crop",
   },
-  technology: {
-    title: "Code powered.",
-    description: "Pixel-perfect implementation. We build robust, scalable platforms that perform as good as they look.",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop",
-    features: ["Web Development", "App Development", "Performance Optimization"]
-  }
-};
-
-const previewData = {
-  strategy: {
-    title: "Strategy",
-    subtitle: "The Foundation",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop"
+  typography: {
+    title: "Type Pairing",
+    description: "A serif-led display with clean UI type for clarity and rhythm.",
+    image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=900&h=700&fit=crop",
   },
-  creative: {
-    title: "Creative",
-    subtitle: "The Expression",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=300&fit=crop"
+  packaging: {
+    title: "Packaging Set",
+    description: "Mockups and dieline-ready visuals built for shelf impact.",
+    image: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=900&h=700&fit=crop",
   },
-  technology: {
-    title: "Technology",
-    subtitle: "The Engine",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop"
-  }
+  social: {
+    title: "Social Templates",
+    description: "Reusable modular templates for launch and always-on campaigns.",
+    image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=900&h=700&fit=crop",
+  },
 };
 
 export function BrandDNA() {
-  const [activeTab, setActiveTab] = useState("strategy");
+  const [activeTab, setActiveTab] = useState("logo");
+  const [reducedMotion, setReducedMotion] = useState(false);
   const activeContent = content[activeTab as keyof typeof content];
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const onChange = () => setReducedMotion(mediaQuery.matches);
+    onChange();
+    mediaQuery.addEventListener("change", onChange);
+    return () => mediaQuery.removeEventListener("change", onChange);
+  }, []);
+
   return (
-    <section className="py-20 md:py-32 bg-[#F5F5F3]">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-20">
-        <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
+    <section className="cc-section bg-[#E5E5E3]">
+      <div className="cc-container">
+        <div className="mb-6 max-w-2xl">
+          <h2 className="font-playfair text-[30px] font-bold text-[#26437A] md:text-[48px]">Brand DNA Layers</h2>
+          <p className="mt-2 text-base text-[#1E335F]/80 md:text-lg">Explore how each layer contributes to the final system composition.</p>
+        </div>
 
-          {/* Left: Controls & Text */}
-          <div className="flex-1 space-y-8">
-            <h2 className="font-playfair font-bold text-[36px] md:text-[56px] leading-[1.1] text-[#26437A]">
-              The layers of<br />your brand DNA.
-            </h2>
-
-            {/* Desktop: Hover Preview Integration */}
-            <div className="hidden md:block">
-              <HoverPreviewProvider data={previewData} className="inline-block">
-                <div className="flex flex-col gap-2 items-start">
-                  <p className="text-[#1E335F]/60 mb-4">Explore our capabilities:</p>
-                  {/* We wrap the segmented button but HoverPreviewLink needs to wrap specific text. 
-                       Actually, the SegmentedButton handles clicks. We want hover preview on the BUTTON labels? 
-                       SegmentedButton component doesn't easily expose children for wrapping. 
-                       Let's just use SegmentedButton for functionality and HoverPreview for a separate list or just skip HoverPreview here to keep it simple as per "Brand DNA Layers" spec which emphasizes the switch.
-                       Actually, spec says "Segmented Button controls".
-                       Let's stick to just SegmentedButton interactions changing the content.
-                   */}
-                  <SegmentedButton
-                    buttons={options}
-                    defaultActive="strategy"
-                    onChange={setActiveTab}
-                    className="bg-[#E5E5E3] p-1"
-                  />
-                </div>
-              </HoverPreviewProvider>
-            </div>
-
-            {/* Mobile: Simple Segmented Button */}
-            <div className="block md:hidden">
-              <SegmentedButton
-                buttons={options}
-                defaultActive="strategy"
-                onChange={setActiveTab}
-                className="bg-[#E5E5E3] p-1 w-full max-w-sm"
-              />
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-6 min-h-[200px]"
-              >
-                <div>
-                  <h3 className="text-2xl font-bold text-[#E8874C] mb-2">{activeContent.title}</h3>
-                  <p className="text-lg text-[#1E335F] leading-relaxed max-w-md">
-                    {activeContent.description}
-                  </p>
-                </div>
-                <ul className="space-y-2">
-                  {activeContent.features.map(feature => (
-                    <li key={feature} className="flex items-center text-[#1E335F]/80">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#26437A] mr-3" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </AnimatePresence>
+        <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-10 md:gap-10">
+          <div className="order-2 md:order-1 md:col-span-6">
+            <motion.div
+              key={activeTab}
+              initial={reducedMotion ? false : { opacity: 0.8, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+              className="relative aspect-[4/3] overflow-hidden rounded-[24px] border border-[#CBD2DC]/50 bg-white shadow-[0px_4px_20px_rgba(30,51,95,0.08)]"
+            >
+              <Image src={activeContent.image} alt={activeContent.title} fill className="object-cover" unoptimized />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1E335F]/20 to-transparent" />
+            </motion.div>
           </div>
 
-          {/* Right: Visual */}
-          <div className="flex-1 w-full">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
-                className="relative aspect-square md:aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl"
-              >
-                <Image
-                  src={activeContent.image}
-                  alt={activeContent.title}
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
-                <div className="absolute inset-0 bg-[#26437A]/10 mix-blend-multiply" />
-              </motion.div>
-            </AnimatePresence>
+          <div className="order-1 md:order-2 md:col-span-4">
+            <SegmentedButton buttons={options} defaultActive="logo" onChange={setActiveTab} className="w-full bg-white p-1" />
+            <div className="mt-5 rounded-[20px] border border-[#CBD2DC]/50 bg-white/70 p-5">
+              <h3 className="font-playfair text-2xl text-[#26437A]">{activeContent.title}</h3>
+              <p className="mt-2 text-base text-[#1E335F]/80">{activeContent.description}</p>
+            </div>
           </div>
         </div>
       </div>
