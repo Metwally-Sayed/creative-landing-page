@@ -40,9 +40,9 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-16 md:py-24 bg-white">
+    <section id="faq" className="bg-card py-16 md:py-24">
       <div className="max-w-[800px] mx-auto px-5 md:px-20">
-        <h2 className="font-playfair font-bold text-[30px] md:text-[48px] text-[#26437A] mb-12 text-center">
+        <h2 className="mb-12 text-center font-playfair text-[30px] font-bold text-primary md:text-[48px]">
           Common Questions
         </h2>
         <Accordion type="single" collapsible className="space-y-0">
@@ -50,12 +50,12 @@ export function FAQ() {
             <AccordionItem
               key={index}
               value={`faq-${index}`}
-              className="border-b border-[#CBD2DC]/50 py-1"
+              className="border-b border-border/50 py-1"
             >
-              <AccordionTrigger className="text-left font-medium text-base md:text-lg text-[#1E335F] hover:no-underline py-5 [&>svg]:text-[#26437A]">
+              <AccordionTrigger className="py-5 text-left text-base font-medium text-foreground hover:no-underline md:text-lg [&>svg]:text-primary">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-base text-[#1E335F]/70 pb-5 pt-1 leading-relaxed">
+              <AccordionContent className="pb-5 pt-1 text-base leading-relaxed text-foreground/70">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

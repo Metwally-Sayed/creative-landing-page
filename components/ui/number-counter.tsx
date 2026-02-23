@@ -1,6 +1,8 @@
+"use client";
+
+import { cn } from "@/lib/utils";
 import { motion, useInView, useSpring, useTransform } from "motion/react";
 import * as React from "react";
-import { cn } from "@/lib/utils";
 
 type EasingType =
   | "linear"
@@ -426,12 +428,13 @@ export {
   NumberCounter,
   RollingCounter,
   SpringCounter,
-  StatCounter,
+  StatCounter
 };
 export type {
   CircularCounterProps,
   EasingType,
   NumberCounterProps,
   RollingCounterProps,
-  StatCounterProps,
+  StatCounterProps
 };
+

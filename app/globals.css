@@ -69,55 +69,55 @@
   --radius: 1.25rem;
 
   /* Brand Palette (HSL channels) */
-  --primary: 219 53% 31%;               /* #26437A */
-  --primary-foreground: 0 0% 100%;      /* #FFFFFF */
+  --primary: 218 58% 30%;
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 27 78% 60%;              /* #E8874C */
-  --secondary-foreground: 221 52% 25%;  /* #1E335F */
+  --secondary: 23 76% 63%;
+  --secondary-foreground: 218 65% 27%;
 
-  --accent: 221 52% 25%;                /* #1E335F */
+  --accent: 218 65% 27%;
   --accent-foreground: 0 0% 100%;
 
-  --background: 60 4% 95%;              /* #E5E5E3 */
-  --foreground: 221 52% 25%;            /* #1E335F */
+  --background: 60 9% 96%;
+  --foreground: 218 65% 27%;
 
   --card: 0 0% 100%;
-  --card-foreground: 221 52% 25%;
+  --card-foreground: 218 65% 27%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 221 52% 25%;
+  --popover-foreground: 218 65% 27%;
 
-  --muted: 215 14% 83%;                 /* #CBD2DC */
-  --muted-foreground: 221 35% 32%;
+  --muted: 215 20% 83%;
+  --muted-foreground: 218 45% 36%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
 
   --border: 215 14% 83%;
   --input: 215 14% 83%;
-  --ring: 27 78% 60%;                   /* Orange focus ring */
+  --ring: 23 76% 63%;
 
   /* Charts (aligned to brand palette) */
-  --chart-1: 219 53% 31%;
-  --chart-2: 27 78% 60%;
-  --chart-3: 221 52% 25%;
-  --chart-4: 60 4% 95%;
-  --chart-5: 215 14% 83%;
+  --chart-1: 218 58% 30%;
+  --chart-2: 23 76% 63%;
+  --chart-3: 218 65% 27%;
+  --chart-4: 60 9% 96%;
+  --chart-5: 215 20% 83%;
 
   /* Sidebar */
-  --sidebar: 60 4% 95%;
-  --sidebar-foreground: 221 52% 25%;
-  --sidebar-primary: 219 53% 31%;
+  --sidebar: 60 9% 96%;
+  --sidebar-foreground: 218 65% 27%;
+  --sidebar-primary: 218 58% 30%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 221 52% 25%;
+  --sidebar-accent: 218 65% 27%;
   --sidebar-accent-foreground: 0 0% 100%;
-  --sidebar-border: 215 14% 83%;
-  --sidebar-ring: 27 78% 60%;
+  --sidebar-border: 215 20% 83%;
+  --sidebar-ring: 23 76% 63%;
 
   /* Highlight Text (for Joly Highlight Text component) */
-  --highlight-primary: 219 53% 31%;
-  --highlight-secondary: 27 78% 60%;
-  --highlight-accent: 27 78% 60%;
+  --highlight-primary: 218 58% 30%;
+  --highlight-secondary: 23 76% 63%;
+  --highlight-accent: 23 76% 63%;
   --highlight-destructive: 0 84.2% 60.2%;
 
   /* Premium shadow tokens */
@@ -129,42 +129,42 @@
    DARK THEME
 -------------------------------------------------------- */
 .dark {
-  --background: 221 52% 25%;
-  --foreground: 60 4% 95%;
+  --background: 218 65% 18%;
+  --foreground: 0 0% 91%;
 
-  --card: 219 53% 31%;
-  --card-foreground: 60 4% 95%;
+  --card: 218 58% 30%;
+  --card-foreground: 0 0% 91%;
 
-  --popover: 219 53% 31%;
-  --popover-foreground: 60 4% 95%;
+  --popover: 218 58% 30%;
+  --popover-foreground: 0 0% 91%;
 
-  --primary: 60 4% 95%;
-  --primary-foreground: 221 52% 25%;
+  --primary: 0 0% 91%;
+  --primary-foreground: 218 65% 27%;
 
-  --secondary: 27 78% 60%;
-  --secondary-foreground: 221 52% 25%;
+  --secondary: 23 76% 63%;
+  --secondary-foreground: 218 65% 27%;
 
-  --muted: 219 53% 31%;
-  --muted-foreground: 215 14% 83%;
+  --muted: 218 45% 36%;
+  --muted-foreground: 215 20% 83%;
 
-  --accent: 219 53% 31%;
-  --accent-foreground: 60 4% 95%;
+  --accent: 218 58% 30%;
+  --accent-foreground: 0 0% 91%;
 
-  --border: 219 53% 31%;
-  --input: 219 53% 31%;
-  --ring: 27 78% 60%;
+  --border: 218 45% 36%;
+  --input: 218 45% 36%;
+  --ring: 23 76% 63%;
 
-  --sidebar: 221 52% 25%;
-  --sidebar-foreground: 60 4% 95%;
-  --sidebar-primary: 219 53% 31%;
+  --sidebar: 218 65% 18%;
+  --sidebar-foreground: 0 0% 91%;
+  --sidebar-primary: 218 58% 30%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 219 53% 31%;
-  --sidebar-accent-foreground: 60 4% 95%;
-  --sidebar-border: 219 53% 31%;
-  --sidebar-ring: 27 78% 60%;
+  --sidebar-accent: 218 58% 30%;
+  --sidebar-accent-foreground: 0 0% 91%;
+  --sidebar-border: 218 45% 36%;
+  --sidebar-ring: 23 76% 63%;
 
-  --shadow-soft: 0px 4px 20px hsl(0 0% 0% / 0.25);
-  --shadow-float: 0px 12px 40px hsl(0 0% 0% / 0.35);
+  --shadow-soft: 0px 4px 20px hsl(var(--accent) / 0.28);
+  --shadow-float: 0px 12px 40px hsl(var(--accent) / 0.42);
 }
 
 /* -------------------------------------------------------
@@ -194,9 +194,9 @@
     min-height: 100svh;
 
     /* Subtle “mist” background — very light (premium, not loud) */
-    background-image:
+    /* background-image:
       radial-gradient(900px circle at 10% 0%, hsl(var(--primary) / 0.06), transparent 55%),
-      radial-gradient(800px circle at 90% 10%, hsl(var(--secondary) / 0.07), transparent 50%);
+      radial-gradient(800px circle at 90% 10%, hsl(var(--secondary) / 0.07), transparent 50%); */
     background-attachment: fixed;
   }
 

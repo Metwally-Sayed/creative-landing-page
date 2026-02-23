@@ -138,7 +138,7 @@ export function ImageComparison({
         style={{
           [orientation === "horizontal" ? "left" : "top"]: `${position}%`,
           backgroundColor: sliderColor,
-          boxShadow: "0 0 10px rgba(0,0,0,0.3)",
+          boxShadow: "0 0 10px hsl(var(--accent) / 0.3)",
         }}
       />
 
@@ -269,7 +269,7 @@ export function ImageComparisonHover({
         className="absolute top-0 h-full w-0.5 bg-background"
         animate={{ left: `${position}%` }}
         transition={{ type: "tween", duration: 0.1 }}
-        style={{ transform: "translateX(-50%)", boxShadow: "0 0 10px rgba(0,0,0,0.3)" }}
+        style={{ transform: "translateX(-50%)", boxShadow: "0 0 10px hsl(var(--accent) / 0.3)" }}
       /> */}
 
       {/* Labels */}
@@ -487,7 +487,7 @@ export function ImageComparisonSwipe({
         style={{
           left: linePosition,
           transform: "translateX(-50%)",
-          boxShadow: "0 0 10px rgba(0,0,0,0.3)",
+          boxShadow: "0 0 10px hsl(var(--accent) / 0.3)",
         }}
       />
 

@@ -1,68 +1,89 @@
-"use client";
-
-import { HighlightText } from "@/components/ui/highlight-text";
-import { BentoGrid } from "@/components/ui/bento-grid";
-import { Film, Lightbulb, Palette, PenTool, Shapes, TrendingUp } from "lucide-react";
+import {
+  Film,
+  Lightbulb,
+  Monitor,
+  Palette,
+  PenTool,
+  TrendingUp,
+} from "lucide-react";
 
 const services = [
   {
     title: "Brand Strategy",
-    description: "Positioning and message architecture that keeps every channel consistent.",
-    icon: <Lightbulb className="h-7 w-7" />,
+    description:
+      "Positioning, messaging, and market differentiation that anchors every touchpoint.",
+    icon: <Lightbulb className="w-8 h-8" />,
     featured: true,
   },
   {
-    title: "Visual Identity",
-    description: "Logo, palette, and type systems built to last beyond campaign cycles.",
-    icon: <Palette className="h-7 w-7" />,
-  },
-  {
-    title: "Packaging",
-    description: "Shelf-ready systems balancing storytelling, compliance, and conversion.",
-    icon: <Shapes className="h-7 w-7" />,
+    title: "Digital Experience",
+    description:
+      "Interfaces that feel intuitive, look premium, and drive measurable engagement.",
+    icon: <Monitor className="w-8 h-8" />,
   },
   {
     title: "Content Direction",
-    description: "Editorial frameworks for social, launch, and always-on communication.",
-    icon: <PenTool className="h-7 w-7" />,
+    description:
+      "Editorial systems and visual storytelling aligned to your brand voice.",
+    icon: <PenTool className="w-8 h-8" />,
   },
   {
-    title: "Paid Creative",
-    description: "Performance-minded ad concepts that preserve brand equity.",
-    icon: <TrendingUp className="h-7 w-7" />,
+    title: "Motion & 3D",
+    description:
+      "Product visualization, explainer animation, and spatial design for modern media.",
+    icon: <Film className="w-8 h-8" />,
   },
   {
-    title: "3D Visuals",
-    description: "Premium renders and motion assets with warm-neutral consistency.",
-    icon: <Film className="h-7 w-7" />,
+    title: "Growth Strategy",
+    description:
+      "Data-informed campaigns that scale reach without diluting brand equity.",
+    icon: <TrendingUp className="w-8 h-8" />,
+  },
+  {
+    title: "Visual Identity",
+    description:
+      "Logo systems, typography, color, and guidelines built for longevity.",
+    icon: <Palette className="w-8 h-8" />,
   },
 ];
 
 export function Services() {
   return (
-    <section id="services" className="cc-section bg-[#E5E5E3]">
-      <div className="cc-container">
-        <h2 className="mb-14 text-center font-playfair text-[30px] font-bold text-[#26437A] md:text-[48px]">
-          Our <HighlightText variant="underline" color="accent">Expertise</HighlightText>
+    <section id="services" className="bg-background py-16 md:py-24">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-20">
+        <h2 className="mb-16 text-center font-playfair text-[30px] font-bold text-primary md:text-[48px]">
+          Our Expertise
         </h2>
-        <BentoGrid className="gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
-            <article
+            <div
               key={service.title}
-              className={`rounded-[22px] border p-7 shadow-[0px_4px_20px_rgba(30,51,95,0.08)] ${
-                service.featured
-                  ? "border-white/10 bg-[#1E335F] text-white"
-                  : "border-[#CBD2DC]/50 bg-white/65 text-[#1E335F]"
-              }`}
+              className={`group rounded-[20px] p-8 transition-shadow duration-300 hover:shadow-xl ${service.featured
+                  ? "bg-accent shadow-[var(--shadow-float)]"
+                  : "border border-border/50 bg-card/65 shadow-[var(--shadow-soft)]"
+                }`}
             >
-              <div className={`${service.featured ? "text-white/70" : "text-[#26437A]/60"}`}>{service.icon}</div>
-              <h3 className="mt-4 text-xl font-medium">{service.title}</h3>
-              <p className={`${service.featured ? "text-white/80" : "text-[#1E335F]/80"} mt-2 text-base leading-relaxed`}>
+              <div
+                className={`mb-4 ${service.featured ? "text-accent-foreground/60" : "text-primary/40"
+                  }`}
+              >
+                {service.icon}
+              </div>
+              <h3
+                className={`mb-2 text-xl font-medium ${service.featured ? "text-accent-foreground" : "text-foreground"
+                  }`}
+              >
+                {service.title}
+              </h3>
+              <p
+                className={`text-base leading-relaxed ${service.featured ? "text-accent-foreground/70" : "text-foreground/70"
+                  }`}
+              >
                 {service.description}
               </p>
-            </article>
+            </div>
           ))}
-        </BentoGrid>
+        </div>
       </div>
     </section>
   );

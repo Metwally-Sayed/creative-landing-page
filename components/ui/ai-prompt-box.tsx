@@ -32,11 +32,11 @@ const styles = `
     background: transparent;
   }
   textarea::-webkit-scrollbar-thumb {
-    background-color: #444444;
+    background-color: hsl(var(--border));
     border-radius: 3px;
   }
   textarea::-webkit-scrollbar-thumb:hover {
-    background-color: #555555;
+    background-color: hsl(var(--muted-foreground));
   }
 `;
 
@@ -62,7 +62,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, ...props }, ref) => (
     <textarea
       className={cn(
-        "scrollbar-thin scrollbar-thumb-[#444444] scrollbar-track-transparent hover:scrollbar-thumb-[#555555] flex min-h-[44px] w-full resize-none rounded-md border-none bg-transparent px-3 py-2.5 text-base text-gray-100 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50",
+        "scrollbar-thin scrollbar-thumb-[hsl(var(--border))] scrollbar-track-transparent hover:scrollbar-thumb-[hsl(var(--muted-foreground))] flex min-h-[44px] w-full resize-none rounded-md border-none bg-transparent px-3 py-2.5 text-base text-gray-100 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       ref={ref}
@@ -85,7 +85,7 @@ const TooltipContent = React.forwardRef<
     ref={ref}
     sideOffset={sideOffset}
     className={cn(
-      "fade-in-0 zoom-in-95 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 animate-in overflow-hidden rounded-md border border-[#333333] bg-[#1F2023] px-3 py-1.5 text-sm text-white shadow-md data-[state=closed]:animate-out",
+      "fade-in-0 zoom-in-95 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 animate-in overflow-hidden rounded-md border border-[hsl(var(--border))] bg-[hsl(var(--accent))] px-3 py-1.5 text-sm text-white shadow-md data-[state=closed]:animate-out",
       className,
     )}
     {...props}
@@ -120,13 +120,13 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[90vw] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-2xl border border-[#333333] bg-[#1F2023] p-0 shadow-xl duration-300 data-[state=closed]:animate-out data-[state=open]:animate-in md:max-w-[800px]",
+        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[90vw] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--accent))] p-0 shadow-xl duration-300 data-[state=closed]:animate-out data-[state=open]:animate-in md:max-w-[800px]",
         className,
       )}
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute top-4 right-4 z-10 rounded-full bg-[#2E3033]/80 p-2 transition-all hover:bg-[#2E3033]">
+      <DialogPrimitive.Close className="absolute top-4 right-4 z-10 rounded-full bg-[hsl(var(--accent))]/80 p-2 transition-all hover:bg-[hsl(var(--accent))]">
         <X className="h-5 w-5 text-gray-200 hover:text-white" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
@@ -158,9 +158,9 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "default", size = "default", ...props }, ref) => {
     const variantClasses = {
-      default: "bg-white hover:bg-white/80 text-black",
-      outline: "border border-[#444444] bg-transparent hover:bg-[#3A3A40]",
-      ghost: "bg-transparent hover:bg-[#3A3A40]",
+      default: "bg-card text-accent hover:bg-card/85",
+      outline: "border border-[hsl(var(--border))] bg-transparent hover:bg-accent/75",
+      ghost: "bg-transparent hover:bg-accent/75",
     };
     const sizeClasses = {
       default: "h-10 px-4 py-2",
@@ -272,7 +272,7 @@ const ImageViewDialog: React.FC<ImageViewDialogProps> = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
-          className="relative overflow-hidden rounded-2xl bg-[#1F2023] shadow-2xl"
+          className="relative overflow-hidden rounded-2xl bg-[hsl(var(--accent))] shadow-2xl"
         >
           <div className="relative max-h-[80vh] w-full">
             <Image
@@ -364,7 +364,7 @@ const PromptInput = React.forwardRef<HTMLDivElement, PromptInputProps>(
           <div
             ref={ref}
             className={cn(
-              "rounded-3xl border border-[#444444] bg-[#1F2023] p-2 shadow-[0_8px_30px_rgba(0,0,0,0.24)] transition-all duration-300",
+              "rounded-3xl border border-[hsl(var(--border))] bg-[hsl(var(--accent))] p-2 shadow-[var(--shadow-float)] transition-all duration-300",
               isLoading && "border-red-500/70",
               className,
             )}
@@ -472,7 +472,7 @@ const PromptInputAction: React.FC<PromptInputActionProps> = ({
 const CustomDivider: React.FC = () => (
   <div className="relative mx-1 h-6 w-[1.5px]">
     <div
-      className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent via-[#9b87f5]/70 to-transparent"
+      className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent via-[hsl(var(--secondary))]/70 to-transparent"
       style={{
         clipPath:
           "polygon(0% 0%, 100% 0%, 100% 40%, 140% 50%, 100% 60%, 100% 100%, 0% 100%, 0% 60%, -40% 50%, 0% 40%)",
@@ -632,7 +632,7 @@ export const PromptInputBox = React.forwardRef(
           isLoading={isLoading}
           onSubmit={handleSubmit}
           className={cn(
-            "w-full border-[#444444] bg-[#1F2023] shadow-[0_8px_30px_rgba(0,0,0,0.24)] transition-all duration-300 ease-in-out",
+            "w-full border-[hsl(var(--border))] bg-[hsl(var(--accent))] shadow-[var(--shadow-float)] transition-all duration-300 ease-in-out",
             isRecording && "border-red-500/70",
             className,
           )}
@@ -727,7 +727,7 @@ export const PromptInputBox = React.forwardRef(
               <PromptInputAction tooltip="Upload image">
                 <button
                   onClick={() => uploadInputRef.current?.click()}
-                  className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-[#9CA3AF] transition-colors hover:bg-gray-600/30 hover:text-[#D1D5DB]"
+                  className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-[hsl(var(--muted-foreground))] transition-colors hover:bg-gray-600/30 hover:text-[hsl(var(--foreground))]"
                   disabled={isRecording}
                 >
                   <Paperclip className="h-5 w-5 transition-colors" />
@@ -754,8 +754,8 @@ export const PromptInputBox = React.forwardRef(
                   className={cn(
                     "flex h-8 items-center gap-1 rounded-full border px-2 py-1 transition-all",
                     showSearch
-                      ? "border-[#1EAEDB] bg-[#1EAEDB]/15 text-[#1EAEDB]"
-                      : "border-transparent bg-transparent text-[#9CA3AF] hover:text-[#D1D5DB]",
+                      ? "border-[hsl(var(--secondary))] bg-[hsl(var(--secondary))]/15 text-[hsl(var(--secondary))]"
+                      : "border-transparent bg-transparent text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]",
                   )}
                 >
                   <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center">
@@ -782,7 +782,7 @@ export const PromptInputBox = React.forwardRef(
                       <Globe
                         className={cn(
                           "h-4 w-4",
-                          showSearch ? "text-[#1EAEDB]" : "text-inherit",
+                          showSearch ? "text-[hsl(var(--secondary))]" : "text-inherit",
                         )}
                       />
                     </motion.div>
@@ -794,7 +794,7 @@ export const PromptInputBox = React.forwardRef(
                         animate={{ width: "auto", opacity: 1 }}
                         exit={{ width: 0, opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="flex-shrink-0 overflow-hidden whitespace-nowrap text-[#1EAEDB] text-xs"
+                        className="flex-shrink-0 overflow-hidden whitespace-nowrap text-[hsl(var(--secondary))] text-xs"
                       >
                         Search
                       </motion.span>
@@ -810,8 +810,8 @@ export const PromptInputBox = React.forwardRef(
                   className={cn(
                     "flex h-8 items-center gap-1 rounded-full border px-2 py-1 transition-all",
                     showThink
-                      ? "border-[#8B5CF6] bg-[#8B5CF6]/15 text-[#8B5CF6]"
-                      : "border-transparent bg-transparent text-[#9CA3AF] hover:text-[#D1D5DB]",
+                      ? "border-[hsl(var(--secondary))] bg-[hsl(var(--secondary))]/15 text-[hsl(var(--secondary))]"
+                      : "border-transparent bg-transparent text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]",
                   )}
                 >
                   <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center">
@@ -838,7 +838,7 @@ export const PromptInputBox = React.forwardRef(
                       <BrainCog
                         className={cn(
                           "h-4 w-4",
-                          showThink ? "text-[#8B5CF6]" : "text-inherit",
+                          showThink ? "text-[hsl(var(--secondary))]" : "text-inherit",
                         )}
                       />
                     </motion.div>
@@ -850,7 +850,7 @@ export const PromptInputBox = React.forwardRef(
                         animate={{ width: "auto", opacity: 1 }}
                         exit={{ width: 0, opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="flex-shrink-0 overflow-hidden whitespace-nowrap text-[#8B5CF6] text-xs"
+                        className="flex-shrink-0 overflow-hidden whitespace-nowrap text-[hsl(var(--secondary))] text-xs"
                       >
                         Think
                       </motion.span>
@@ -866,8 +866,8 @@ export const PromptInputBox = React.forwardRef(
                   className={cn(
                     "flex h-8 items-center gap-1 rounded-full border px-2 py-1 transition-all",
                     showCanvas
-                      ? "border-[#F97316] bg-[#F97316]/15 text-[#F97316]"
-                      : "border-transparent bg-transparent text-[#9CA3AF] hover:text-[#D1D5DB]",
+                      ? "border-[hsl(var(--secondary))] bg-[hsl(var(--secondary))]/15 text-[hsl(var(--secondary))]"
+                      : "border-transparent bg-transparent text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))]",
                   )}
                 >
                   <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center">
@@ -894,7 +894,7 @@ export const PromptInputBox = React.forwardRef(
                       <FolderCode
                         className={cn(
                           "h-4 w-4",
-                          showCanvas ? "text-[#F97316]" : "text-inherit",
+                          showCanvas ? "text-[hsl(var(--secondary))]" : "text-inherit",
                         )}
                       />
                     </motion.div>
@@ -906,7 +906,7 @@ export const PromptInputBox = React.forwardRef(
                         animate={{ width: "auto", opacity: 1 }}
                         exit={{ width: 0, opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="flex-shrink-0 overflow-hidden whitespace-nowrap text-[#F97316] text-xs"
+                        className="flex-shrink-0 overflow-hidden whitespace-nowrap text-[hsl(var(--secondary))] text-xs"
                       >
                         Canvas
                       </motion.span>
@@ -935,8 +935,8 @@ export const PromptInputBox = React.forwardRef(
                   isRecording
                     ? "bg-transparent text-red-500 hover:bg-gray-600/30 hover:text-red-400"
                     : hasContent
-                      ? "bg-white text-[#1F2023] hover:bg-white/80"
-                      : "bg-transparent text-[#9CA3AF] hover:bg-gray-600/30 hover:text-[#D1D5DB]",
+                      ? "bg-white text-[hsl(var(--accent))] hover:bg-white/80"
+                      : "bg-transparent text-[hsl(var(--muted-foreground))] hover:bg-gray-600/30 hover:text-[hsl(var(--foreground))]",
                 )}
                 onClick={() => {
                   if (isRecording) setIsRecording(false);
@@ -946,13 +946,13 @@ export const PromptInputBox = React.forwardRef(
                 disabled={isLoading && !hasContent}
               >
                 {isLoading ? (
-                  <Square className="h-4 w-4 animate-pulse fill-[#1F2023]" />
+                  <Square className="h-4 w-4 animate-pulse fill-[hsl(var(--accent))]" />
                 ) : isRecording ? (
                   <StopCircle className="h-5 w-5 text-red-500" />
                 ) : hasContent ? (
-                  <ArrowUp className="h-4 w-4 text-[#1F2023]" />
+                  <ArrowUp className="h-4 w-4 text-[hsl(var(--accent))]" />
                 ) : (
-                  <Mic className="h-5 w-5 text-[#1F2023] transition-colors" />
+                  <Mic className="h-5 w-5 text-[hsl(var(--accent))] transition-colors" />
                 )}
               </Button>
             </PromptInputAction>

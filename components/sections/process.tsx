@@ -27,28 +27,28 @@ const steps = [
 
 export function Process() {
   return (
-    <section id="process" className="py-16 md:py-24 bg-[#E5E5E3]">
+    <section id="process" className="bg-background py-16 md:py-24">
       <div className="max-w-[1280px] mx-auto px-5 md:px-20">
-        <h2 className="font-playfair font-bold text-[30px] md:text-[48px] text-[#26437A] mb-16 text-center">
+        <h2 className="mb-16 text-center font-playfair text-[30px] font-bold text-primary md:text-[48px]">
           How We Work
         </h2>
 
         {/* Desktop: horizontal 4-col */}
         <div className="hidden md:grid grid-cols-4 gap-8 relative">
           {/* Connector line */}
-          <div className="absolute top-5 left-[calc(12.5%+20px)] right-[calc(12.5%+20px)] h-px bg-[#CBD2DC]/40" />
+          <div className="absolute top-5 left-[calc(12.5%+20px)] right-[calc(12.5%+20px)] h-px bg-border/40" />
 
           {steps.map((step) => (
             <div key={step.number} className="text-center relative">
-              <div className="w-10 h-10 rounded-full border border-[#CBD2DC]/50 bg-white flex items-center justify-center mx-auto mb-4 relative z-10">
-                <span className="font-playfair font-bold text-base text-[#26437A]">
+              <div className="relative z-10 mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-card">
+                <span className="font-playfair text-base font-bold text-primary">
                   {step.number}
                 </span>
               </div>
-              <h3 className="font-medium text-lg text-[#1E335F] mb-2">
+              <h3 className="mb-2 text-lg font-medium text-foreground">
                 {step.title}
               </h3>
-              <p className="text-base text-[#1E335F]/70 max-w-[200px] mx-auto">
+              <p className="mx-auto max-w-[200px] text-base text-foreground/70">
                 {step.description}
               </p>
             </div>
@@ -57,19 +57,19 @@ export function Process() {
 
         {/* Mobile: vertical timeline */}
         <div className="md:hidden relative pl-8">
-          <div className="absolute left-[19px] top-0 bottom-0 w-px bg-[#CBD2DC]/40" />
+          <div className="absolute left-[19px] top-0 bottom-0 w-px bg-border/40" />
           {steps.map((step) => (
             <div key={step.number} className="relative pb-8 last:pb-0">
-              <div className="absolute left-[-21px] w-10 h-10 rounded-full border border-[#CBD2DC]/50 bg-white flex items-center justify-center">
-                <span className="font-playfair font-bold text-base text-[#26437A]">
+              <div className="absolute left-[-21px] flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-card">
+                <span className="font-playfair text-base font-bold text-primary">
                   {step.number}
                 </span>
               </div>
               <div className="pl-6">
-                <h3 className="font-medium text-lg text-[#1E335F] mb-1">
+                <h3 className="mb-1 text-lg font-medium text-foreground">
                   {step.title}
                 </h3>
-                <p className="text-base text-[#1E335F]/70">
+                <p className="text-base text-foreground/70">
                   {step.description}
                 </p>
               </div>

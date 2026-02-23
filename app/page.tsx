@@ -1,11 +1,12 @@
+import { ExpertiseCreative } from "@/components/landing/ExpertiseCreative";
+import { FaqCtaCreative } from "@/components/landing/FaqCtaCreative";
+import { StickyMobileCTARefactor } from "@/components/landing/FooterRefactor";
+import { ProcessCreative } from "@/components/landing/ProcessCreative";
+import { SelectedWorkSection } from "@/components/landing/SelectedWorkSection";
+import FooterStandard from "@/components/mvpblocks/footer-standard";
 import { BrandDNA } from "@/components/sections/brand-dna";
-import { CaseStudies } from "@/components/sections/case-studies";
-import { FAQ } from "@/components/sections/faq";
-import { Footer, StickyMobileCTA } from "@/components/sections/footer";
 import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/sections/hero";
-import { Process } from "@/components/sections/process";
-import { Services } from "@/components/sections/services";
 import { SocialProof } from "@/components/sections/social-proof";
 
 export default function Home() {
@@ -15,14 +16,14 @@ export default function Home() {
       <main>
         <Hero />
         <SocialProof />
-        <Services />
-        <CaseStudies />
+        <ExpertiseCreative />
+        <SelectedWorkSection />
         <BrandDNA />
-        <Process />
-        <FAQ />
+        <ProcessCreative />
+        <FaqCtaCreative />
       </main>
-      <Footer />
-      <StickyMobileCTA />
+      <FooterStandard />
+      <StickyMobileCTARefactor />
     </>
   );
 }

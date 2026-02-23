@@ -79,12 +79,12 @@ export default function SegmentedButton({
   return (
     <div
       ref={containerRef}
-      className={`relative inline-flex items-center justify-start rounded-full ${className}`}
+      className={`relative inline-flex items-center justify-start rounded-full border border-border/60 bg-card/80 p-0.5 ${className}`}
       onMouseLeave={() => setHoveredIndex(null)}
       role="group"
     >
       <motion.div
-        className="absolute top-0 h-7 rounded-full bg-black/10 dark:bg-white/15"
+        className="absolute top-0.5 h-8 rounded-full bg-primary/10"
         animate={{
           left: hoverStyle.left,
           width: hoverStyle.width,
@@ -97,7 +97,7 @@ export default function SegmentedButton({
       />
 
       <motion.div
-        className="absolute top-0 h-7 rounded-[999px] bg-gradient-to-b from-[#A8A8A8] to-[#D3D3D3] px-2.5 py-1 shadow-[inset_0_1px_0_0_rgba(0,0,0,0.15),inset_0_-1px_0_0_rgba(255,255,255,0.30),inset_0_0_0_1px_rgba(0,0,0,0.10),inset_0_-6px_10.5px_0_rgba(0,0,0,0.08)] dark:from-[#D3D3D3] dark:to-[#A8A8A8] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.30),inset_0_-1px_0_0_rgba(255,255,255,0.60),inset_0_0_0_1px_rgba(255,255,255,0.30),inset_0_-6px_10.5px_0_rgba(255,255,255,0.13)]"
+        className="absolute top-0.5 h-8 rounded-[999px] bg-primary px-2.5 py-1 shadow-[var(--shadow-soft)]"
         animate={{
           left: indicatorStyle.left,
           width: indicatorStyle.width,
@@ -117,7 +117,7 @@ export default function SegmentedButton({
           }}
           onClick={() => handleButtonClick(button.id)}
           onMouseEnter={() => setHoveredIndex(index)}
-          className="relative z-10 flex items-center justify-center gap-2 rounded-full px-2 py-1 transition-colors"
+          className="relative z-10 flex h-8 items-center justify-center gap-2 rounded-full px-4 py-1 transition-colors"
         >
           {button.isLogo ? (
             <div className="flex h-5 items-center justify-center">
@@ -129,8 +129,8 @@ export default function SegmentedButton({
                 xmlns="http://www.w3.org/2000/svg"
                 className={`transition-all ${
                   activeButton === button.id
-                    ? "[filter:drop-shadow(0px_1px_0px_rgba(255,255,255,0.65))] [&_path]:fill-black dark:[&_path]:fill-black/80"
-                    : "[&_path]:fill-neutral-50/80 dark:[&_path]:fill-neutral-50/80"
+                    ? "[&_path]:fill-primary-foreground"
+                    : "[&_path]:fill-foreground/75"
                 }`}
               >
                 <path
@@ -149,8 +149,8 @@ export default function SegmentedButton({
             <span
               className={`text-center font-normal font-sans text-sm leading-tight transition-colors ${
                 activeButton === button.id
-                  ? "text-black [text-shadow:_0px_1px_0px_rgb(255_255_255_/_0.65)] dark:text-black/80"
-                  : "text-black-50/80 dark:text-neutral-50/80"
+                  ? "font-medium text-primary-foreground"
+                  : "text-foreground/75 hover:text-foreground"
               }`}
             >
               {button.label}
